@@ -6,6 +6,13 @@ Premium software company website built with Next.js, featuring:
 - scroll-driven 3D storytelling
 - CMS-ready dynamic content architecture
 
+## Deploy
+
+```text
+Deploy to Vercel:
+https://vercel.com/new/clone?repository-url=https://github.com/rohanboy17/software-company-site
+```
+
 ## Local Development
 
 ```bash

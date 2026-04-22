@@ -29,6 +29,7 @@ export type ProcessStep = {
 export type CompanyInfo = {
   tagline: string;
   email: string;
+  phone?: string;
   schedulingUrl?: string;
   timezone: string;
   locations: string[];
@@ -87,7 +88,8 @@ export const siteContent: SiteContent = {
   companyName: "NovaAxis Labs",
   company: {
     tagline: "Premium engineering studio for product teams.",
-    email: "hello@novaaxislabs.com",
+    email: "rohanmondalpc@gmail.com",
+    phone: "+91 96744 78909",
     schedulingUrl: "",
     timezone: "UTC+05:30",
     locations: ["Bengaluru", "Remote (Worldwide)"],

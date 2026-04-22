@@ -18,10 +18,18 @@ export default function SiteFooter({ content }: { content: SiteContent }) {
             </p>
             <p className="mt-5 text-sm text-slate-300">
               <span className="text-white/70">Email:</span>{" "}
-              <a className="text-white hover:text-cyan-200" href={`mailto:${content.company?.email ?? "hello@novaaxislabs.com"}`}>
-                {content.company?.email ?? "hello@novaaxislabs.com"}
+              <a className="text-white hover:text-cyan-200" href={`mailto:${content.company?.email ?? "rohanmondalpc@gmail.com"}`}>
+                {content.company?.email ?? "rohanmondalpc@gmail.com"}
               </a>
             </p>
+            {content.company?.phone ? (
+              <p className="mt-2 text-sm text-slate-300">
+                <span className="text-white/70">Phone:</span>{" "}
+                <a className="text-white hover:text-cyan-200" href={`tel:${content.company.phone.replace(/\s+/g, "")}`}>
+                  {content.company.phone}
+                </a>
+              </p>
+            ) : null}
           </div>
 
           <div>
@@ -75,4 +83,3 @@ export default function SiteFooter({ content }: { content: SiteContent }) {
     </footer>
   );
 }
-

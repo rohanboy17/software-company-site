@@ -12,6 +12,7 @@ function normalizeSiteContent(input: Partial<SiteContent>): SiteContent {
     company: {
       tagline: input.company?.tagline || localSiteContent.company?.tagline || "",
       email: input.company?.email || localSiteContent.company?.email || "",
+      phone: input.company?.phone || localSiteContent.company?.phone,
       schedulingUrl: input.company?.schedulingUrl || localSiteContent.company?.schedulingUrl,
       timezone: input.company?.timezone || localSiteContent.company?.timezone || "UTC",
       locations: input.company?.locations?.length ? input.company.locations : localSiteContent.company?.locations || [],

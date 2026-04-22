@@ -4,7 +4,7 @@ import { Chip } from "@/components/site/SectionPrimitives";
 
 export default function FinalCTASection({ content }: { content: SiteContent }) {
   const schedulingUrl = content.company?.schedulingUrl;
-  const email = content.company?.email ?? "hello@novaaxislabs.com";
+  const email = content.company?.email ?? "rohanmondalpc@gmail.com";
 
   return (
     <section className="relative bg-[#030712] pb-28 pt-12">

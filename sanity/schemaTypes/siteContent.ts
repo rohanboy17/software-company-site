@@ -18,6 +18,7 @@ const siteContentSchema = {
       fields: [
         { name: "tagline", title: "Tagline", type: "string" },
         { name: "email", title: "Email", type: "string" },
+        { name: "phone", title: "Phone", type: "string" },
         { name: "schedulingUrl", title: "Scheduling URL", type: "url" },
         { name: "timezone", title: "Timezone", type: "string" },
         { name: "locations", title: "Locations", type: "array", of: [{ type: "string" }] },

@@ -9,7 +9,8 @@ export const metadata = {
 export default async function ContactPage() {
   const content = await getSiteContent();
   const schedulingUrl = content.company?.schedulingUrl;
-  const salesEmail = content.company?.email ?? "hello@novaaxislabs.com";
+  const salesEmail = content.company?.email ?? "rohanmondalpc@gmail.com";
+  const phone = content.company?.phone;
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-16 text-slate-100">
@@ -60,6 +61,16 @@ export default async function ContactPage() {
               <p className="text-xs uppercase tracking-[0.2em] text-white/70">Email</p>
               <p className="mt-2 text-white">{salesEmail}</p>
             </div>
+            {phone ? (
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-xs uppercase tracking-[0.2em] text-white/70">Phone</p>
+                <p className="mt-2 text-white">
+                  <a className="hover:text-cyan-200" href={`tel:${phone.replace(/\s+/g, "")}`}>
+                    {phone}
+                  </a>
+                </p>
+              </div>
+            ) : null}
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <p className="text-xs uppercase tracking-[0.2em] text-white/70">Timezone</p>
               <p className="mt-2 text-white">{content.company?.timezone ?? "UTC+05:30"}</p>
@@ -70,4 +81,3 @@ export default async function ContactPage() {
     </main>
   );
 }
-

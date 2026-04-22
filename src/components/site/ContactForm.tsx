@@ -29,19 +29,41 @@ export default function ContactForm() {
       body: JSON.stringify({ ...payload, startedAt: startedAtRef.current ?? undefined }),
     });
 
+    const data = (await res.json().catch(() => ({}))) as { error?: string; detail?: string };
+
     if (res.ok) {
       setState("success");
       form.reset();
       return;
     }
 
-    const data = (await res.json().catch(() => ({}))) as { error?: string };
     setState("error");
-    setError(
-      data.error === "email_not_configured"
-        ? "Contact email isn’t configured yet. Add RESEND_API_KEY + CONTACT_TO_EMAIL in .env.local."
-        : "Something went wrong. Please try again.",
-    );
+
+    if (data.error === "email_not_configured") {
+      setError(
+        "Contact email isn't configured yet. Add RESEND_API_KEY + CONTACT_TO_EMAIL in Vercel Env Vars.",
+      );
+      return;
+    }
+
+    if (data.error === "email_send_failed") {
+      setError(
+        `Email couldn't be sent. Check CONTACT_FROM_EMAIL is a Resend verified sender.${data.detail ? ` (${data.detail})` : ""}`,
+      );
+      return;
+    }
+
+    if (data.error === "rate_limited") {
+      setError("Too many requests. Please wait a minute and try again.");
+      return;
+    }
+
+    if (data.error === "validation_failed") {
+      setError("Please fill all required fields (message must be at least 20 characters).");
+      return;
+    }
+
+    setError("Something went wrong. Please try again.");
   }
 
   return (
@@ -142,10 +164,10 @@ export default function ContactForm() {
           disabled={state === "submitting"}
           className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-7 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {state === "submitting" ? "Sending…" : "Send request"}
+          {state === "submitting" ? "Sending..." : "Send request"}
         </button>
         <p className="text-sm text-slate-300">
-          {state === "success" ? "Received — we’ll reply soon." : error ?? " "}
+          {state === "success" ? "Received — we'll reply soon." : error ?? " "}
         </p>
       </div>
     </form>

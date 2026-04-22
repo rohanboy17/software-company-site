@@ -68,11 +68,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // Time-based bot heuristic: if submitted in under 1.5s, pretend success.
-  if (typeof body.startedAt === "number" && Date.now() - body.startedAt < 1500) {
-    return NextResponse.json({ ok: true });
-  }
-
   const name = (body.name || "").trim();
   const email = (body.email || "").trim();
   const message = (body.message || "").trim();
@@ -112,13 +107,28 @@ export async function POST(req: Request) {
     .filter(Boolean)
     .join("\n");
 
-  await resend.emails.send({
-    from,
-    to,
-    replyTo: email,
-    subject,
-    text,
-  });
+  try {
+    await resend.emails.send({
+      from,
+      to,
+      replyTo: email,
+      subject,
+      text,
+    });
+  } catch (error) {
+    console.error("[contact] resend send failed", error);
+    const detail =
+      process.env.NODE_ENV !== "production"
+        ? error instanceof Error
+          ? error.message
+          : String(error)
+        : undefined;
+
+    return NextResponse.json(
+      { ok: false, error: "email_send_failed", detail },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }

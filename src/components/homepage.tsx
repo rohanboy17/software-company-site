@@ -132,7 +132,6 @@ function FrameSequenceBackground({
     <>
       <div className="pointer-events-none fixed inset-0 z-0 bg-[#020817]">
         <canvas ref={canvasRef} className="h-full w-full" />
-        <div className="absolute inset-0 grain" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.3)_0%,rgba(2,6,23,0.38)_35%,rgba(2,6,23,0.6)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(6,182,212,0.18),transparent_25%),radial-gradient(circle_at_80%_18%,rgba(59,130,246,0.14),transparent_30%)]" />
       </div>

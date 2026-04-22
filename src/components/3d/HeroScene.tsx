@@ -20,7 +20,8 @@ if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
       const first = args[0];
       if (
         typeof first === "string" &&
-        first.includes("Clock: This module has been deprecated") &&
+        first.includes("module has been deprecated") &&
+        first.includes("Clock") &&
         first.includes("THREE.Timer")
       ) {
         return;
@@ -35,6 +36,7 @@ function ParticleCloud({ count = 2000, tickFps = 30 }: { count?: number; tickFps
   const points = useRef<THREE.Points>(null);
   const { pointer, viewport } = useThree();
   const invalidate = useThree((state) => state.invalidate);
+  const visibleRef = useRef(true);
   
   const positions = useMemo(() => {
     const p = new Float32Array(count * 3);
@@ -60,15 +62,27 @@ function ParticleCloud({ count = 2000, tickFps = 30 }: { count?: number; tickFps
     let last = 0;
     const interval = 1000 / tickFps;
 
+    const onVisibility = () => {
+      visibleRef.current = document.visibilityState === "visible";
+      if (visibleRef.current) invalidate();
+    };
+
+    document.addEventListener("visibilitychange", onVisibility);
+    visibleRef.current = document.visibilityState === "visible";
+
     const loop = (t: number) => {
       raf = window.requestAnimationFrame(loop);
+      if (!visibleRef.current) return;
       if (t - last < interval) return;
       last = t;
       invalidate();
     };
 
     raf = window.requestAnimationFrame(loop);
-    return () => window.cancelAnimationFrame(raf);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.cancelAnimationFrame(raf);
+    };
   }, [invalidate, tickFps]);
 
   useFrame((state, delta) => {

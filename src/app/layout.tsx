@@ -8,7 +8,7 @@ import SiteFooter from "@/components/site/SiteFooter";
 import Analytics from "@/components/site/Analytics";
 import DevVitals from "@/components/site/DevVitals";
 
-// Load cursor only on the client — prevents hydration mismatch
+// Client-only islands handle cursor/3D to prevent hydration mismatch
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useMemo, useRef, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { SiteContent } from "@/content/site-content";
 import { TextReveal } from "../ui/TextReveal";
 import { MagneticLink } from "../ui/MagneticLink";
@@ -31,13 +31,14 @@ function splitHeadline(title: string): [string, string | null] {
 export default function HeroSection({ content }: { content: SiteContent }) {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { amount: 0.25 });
-  const hydrated = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
+  const [mounted, setMounted] = useState(false);
 
-  const showHero = useMemo(() => hydrated && inView, [hydrated, inView]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  const showHero = mounted && inView;
   const [headlineA, headlineB] = useMemo(() => splitHeadline(content.hero.title), [content.hero.title]);
   const schedulingUrl = content.company?.schedulingUrl;
   const primaryHref = schedulingUrl || "/contact";
@@ -47,9 +48,7 @@ export default function HeroSection({ content }: { content: SiteContent }) {
   return (
     <section
       ref={sectionRef}
-      className={`relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#030712]${
-        showHero ? " cursor-none" : ""
-      }`}
+      className={`relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#030712]${showHero ? " cursor-none" : ""}`}
     >
       {/* 3D Background */}
       {showHero ? (
@@ -63,7 +62,6 @@ export default function HeroSection({ content }: { content: SiteContent }) {
 
       {/* Glow Effects */}
       <div className="absolute inset-0 hero-glow pointer-events-none" />
-      <div className="absolute inset-0 grain pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center pointer-events-auto">

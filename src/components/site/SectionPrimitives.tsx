@@ -6,13 +6,15 @@ export function SectionShell({
   children,
   className,
   variant = "default",
+  background,
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
   variant?: "default" | "alt" | "fade-top";
+  background?: ReactNode;
 }) {
-  const background =
+  const bgClass =
     variant === "alt"
       ? "bg-[#020817]"
       : "bg-[#030712]";
@@ -27,12 +29,13 @@ export function SectionShell({
       id={id}
       className={cn(
         "relative overflow-hidden py-28",
-        background,
+        bgClass,
         overlay,
         className,
       )}
     >
       <GlowBackdrop />
+      {background}
       <div className="relative mx-auto w-full max-w-6xl px-6">{children}</div>
     </section>
   );

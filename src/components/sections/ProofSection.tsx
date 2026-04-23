@@ -5,6 +5,7 @@ import { getSanityImageUrl } from "@/lib/cms/image-url";
 import { SectionHeader, SectionShell, Chip } from "@/components/site/SectionPrimitives";
 import { Reveal, Stagger, Item } from "@/components/site/MotionPrimitives";
 import SpotlightCard from "@/components/ui/SpotlightCard";
+import WorkSceneWrapper from "@/components/3d/WorkSceneWrapper";
 
 function StudyImage({ src, alt }: { src: string | null; alt: string }) {
   if (!src) return null;
@@ -29,20 +30,28 @@ export default function ProofSection({ content }: { content: SiteContent }) {
   const rest = studies.slice(1);
 
   return (
-    <SectionShell id="work" variant="alt">
-      <SectionHeader
-        eyebrow="Proof"
-        title="Case studies with measurable impact."
-        description="Product strategy, engineering rigor, and design craft — delivered with performance budgets so the experience stays premium on real devices."
-        right={
-          <Link
-            href="/work"
-            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            See all work
-          </Link>
-        }
-      />
+    <SectionShell id="work" className="relative overflow-hidden bg-[#030712]">
+      {/* Abstract AI Robot Scene */}
+      <WorkSceneWrapper />
+      
+      {/* Background ambient glow to merge with the scene */}
+      <div className="pointer-events-none absolute left-0 top-0 -z-10 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.05)_0%,transparent_60%)] blur-3xl" />
+
+      <div className="relative z-10 pointer-events-auto">
+        <SectionHeader
+          eyebrow="Proof"
+          title="Case studies with measurable impact."
+          description="Product strategy, engineering rigor, and design craft — delivered with performance budgets so the experience stays premium on real devices."
+          right={
+            <Link
+              href="/work"
+              className="inline-flex items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-500/5 px-6 py-3 text-sm font-bold tracking-wide text-white transition-all hover:bg-cyan-500/10 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+            >
+              See all work <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          }
+        />
+      </div>
 
       <Reveal delay={0.05}>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">

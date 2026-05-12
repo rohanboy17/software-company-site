@@ -11,6 +11,7 @@ export const siteContentProjection = `
       description,
       outcomes,
       features,
+      media,
       faqs[]{
         q,
         a
@@ -22,6 +23,9 @@ export const siteContentProjection = `
       headline,
       impact,
       image,
+      imageUrl,
+      featuredOrder,
+      media,
       problem,
       approach,
       timeline,
@@ -35,7 +39,9 @@ export const siteContentProjection = `
       quote,
       name,
       role,
-      company
+      company,
+      outcome,
+      media
     },
     faqs[]{
       q,
@@ -43,7 +49,8 @@ export const siteContentProjection = `
     },
     differentiators[]{
       title,
-      detail
+      detail,
+      media
     },
     siteSeo,
     process[]{

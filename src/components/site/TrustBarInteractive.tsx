@@ -36,7 +36,7 @@ export default function TrustBarInteractive({ metrics }: { metrics: Metric[] }) 
                   <div className="mt-8 h-[2px] w-12 bg-gradient-to-r from-cyan-400 to-transparent rounded-full group-hover:w-full transition-all duration-700 ease-out" />
                   
                   <p className="mt-6 text-sm leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
-                    {metric.detail || "Built with budgets, guardrails, and milestones — so it ships fast and stays fast."}
+                    {metric.detail || "Built with budgets, guardrails, and milestones - so it ships fast and stays fast."}
                   </p>
 
                   <div className="mt-auto pt-8">

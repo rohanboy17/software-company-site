@@ -123,9 +123,9 @@ export default function ContactForm() {
             <option value="" disabled>
               Select a range
             </option>
-            <option value="$2k-$5k">$2k–$5k</option>
-            <option value="$5k-$15k">$5k–$15k</option>
-            <option value="$15k-$50k">$15k–$50k</option>
+            <option value="$2k-$5k">$2k-$5k</option>
+            <option value="$5k-$15k">$5k-$15k</option>
+            <option value="$15k-$50k">$15k-$50k</option>
             <option value="$50k+">$50k+</option>
           </select>
         </label>
@@ -139,8 +139,8 @@ export default function ContactForm() {
             <option value="" disabled>
               When do you want to launch?
             </option>
-            <option value="2-4 weeks">2–4 weeks</option>
-            <option value="1-2 months">1–2 months</option>
+            <option value="2-4 weeks">2-4 weeks</option>
+            <option value="1-2 months">1-2 months</option>
             <option value="3+ months">3+ months</option>
           </select>
         </label>
@@ -167,7 +167,7 @@ export default function ContactForm() {
           {state === "submitting" ? "Sending..." : "Send request"}
         </button>
         <p className="text-sm text-slate-300">
-          {state === "success" ? "Received — we'll reply soon." : error ?? " "}
+          {state === "success" ? "Received - we'll reply soon." : error ?? " "}
         </p>
       </div>
     </form>

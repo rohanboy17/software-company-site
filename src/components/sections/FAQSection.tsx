@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { FAQItem, SiteContent } from "@/content/site-content";
 import { SectionHeader, SectionShell, Chip } from "@/components/site/SectionPrimitives";
 import { Reveal } from "@/components/site/MotionPrimitives";
+import { AnimatedDiagram } from "@/components/site/MediaPrimitives";
 import FAQAccordion from "@/components/site/FAQAccordion";
 
 const fallbackFaqs: FAQItem[] = [
@@ -14,7 +15,7 @@ const fallbackFaqs: FAQItem[] = [
   },
   {
     q: "How fast can we launch?",
-    a: "Most marketing sites ship in 2–6 weeks depending on complexity. We'll define milestones and a delivery plan in the first call.",
+    a: "Most marketing sites ship in 2-6 weeks depending on complexity. We'll define milestones and a delivery plan in the first call.",
   },
   {
     q: "Who owns the code and design?",
@@ -22,7 +23,7 @@ const fallbackFaqs: FAQItem[] = [
   },
   {
     q: "Can you work with our existing team?",
-    a: "Yes — we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation.",
+    a: "Yes - we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation.",
   },
 ];
 
@@ -34,7 +35,7 @@ export default function FAQSection({ content }: { content?: SiteContent }) {
       <SectionHeader
         eyebrow="FAQ"
         title="Quick answers."
-        description="No surprises: scope, timelines, ownership, and delivery models — clearly defined."
+        description="No surprises: scope, timelines, ownership, and delivery models - clearly defined."
       />
 
       <div className="mt-16 grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
@@ -58,6 +59,10 @@ export default function FAQSection({ content }: { content?: SiteContent }) {
             <p className="mt-6 text-base leading-relaxed text-slate-400">
               We&apos;ll audit your current stack, align on goals, and outline a delivery path with milestones.
             </p>
+
+            <div className="mt-8 rounded-[28px] border border-white/10 bg-slate-950/40 p-4">
+              <AnimatedDiagram variant="flow" className="min-h-[210px]" />
+            </div>
             
             <div className="mt-8 flex flex-wrap gap-2">
               <Chip>Launch Sprint</Chip>
@@ -91,4 +96,3 @@ export default function FAQSection({ content }: { content?: SiteContent }) {
     </SectionShell>
   );
 }
-

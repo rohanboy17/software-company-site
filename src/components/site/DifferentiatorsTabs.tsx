@@ -2,11 +2,13 @@
 
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useMemo, useState } from "react";
+import { AnimatedDiagram, MockupPanel } from "@/components/site/MediaPrimitives";
+import type { Differentiator } from "@/content/site-content";
 
 type Tab = {
   key: string;
   label: string;
-  item: { title: string; detail: string };
+  item: Differentiator;
 };
 
 export default function DifferentiatorsTabs({ tabs }: { tabs: Tab[] }) {
@@ -52,26 +54,52 @@ export default function DifferentiatorsTabs({ tabs }: { tabs: Tab[] }) {
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <p className="text-xs uppercase tracking-[0.25em] text-cyan-200">Why it matters</p>
-            <h3 className="mt-4 text-3xl font-semibold text-white">{current?.item.title}</h3>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
-              {current?.item.detail}
-            </p>
+            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <p className="text-xs uppercase tracking-[0.25em] text-cyan-200">Why it matters</p>
+                <h3 className="mt-4 text-3xl font-semibold text-white">{current?.item.title}</h3>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-200">
+                  {current?.item.detail}
+                </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {[
-                { label: "Craft", value: "Premium motion" },
-                { label: "Quality", value: "Production-grade" },
-                { label: "Speed", value: "Milestones" },
-              ].map((m) => (
-                <div
-                  key={m.label}
-                  className="rounded-3xl border border-white/10 bg-slate-950/35 p-7"
-                >
-                  <p className="text-lg font-semibold text-white">{m.value}</p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-slate-400">{m.label}</p>
+                <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                  {[
+                    { label: "Craft", value: "Premium motion" },
+                    { label: "Quality", value: "Production-grade" },
+                    { label: "Speed", value: "Milestones" },
+                  ].map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="rounded-3xl border border-white/10 bg-slate-950/35 p-5"
+                    >
+                      <p className="text-base font-semibold text-white">{metric.value}</p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-slate-400">{metric.label}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {current?.item.media?.type === "diagram" ? (
+                <div className="rounded-[28px] border border-white/10 bg-slate-950/40 p-4">
+                  <AnimatedDiagram
+                    variant={
+                      current.item.media.variant === "architecture" ? "architecture" : "flow"
+                    }
+                    className="min-h-[280px]"
+                  />
+                </div>
+              ) : (
+                <MockupPanel
+                  variant={
+                    current?.item.media?.variant === "mobile" ||
+                    current?.item.media?.variant === "ai" ||
+                    current?.item.media?.variant === "cms"
+                      ? current.item.media.variant
+                      : "dashboard"
+                  }
+                  title={current?.item.media?.alt ?? current?.item.title}
+                />
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
@@ -79,4 +107,3 @@ export default function DifferentiatorsTabs({ tabs }: { tabs: Tab[] }) {
     </div>
   );
 }
-

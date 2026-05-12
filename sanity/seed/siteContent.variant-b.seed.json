@@ -37,7 +37,7 @@
     {
       "_key": "vb-service-website",
       "_type": "object",
-      "title": "High‑performance Websites",
+      "title": "High-performance Websites",
       "slug": { "_type": "slug", "current": "website-development" },
       "description": "High-converting websites with premium visual depth, technical SEO, and interactive storytelling.",
       "outcomes": ["Stronger conversion rates", "Premium brand trust", "SEO visibility growth"],

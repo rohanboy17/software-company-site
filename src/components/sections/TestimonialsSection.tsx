@@ -19,7 +19,7 @@ const fallbackTestimonials: Testimonial[] = [
   },
   {
     quote:
-      "Best vendor experience we've had — clean engineering, great motion craft, and everything launched on time.",
+      "Best vendor experience we've had - clean engineering, great motion craft, and everything launched on time.",
     name: "Founder",
     role: "Founder",
     company: "FinTech",
@@ -35,7 +35,7 @@ export default function TestimonialsSection({ content }: { content?: SiteContent
       <SectionHeader
         eyebrow="Testimonials"
         title="Trusted when the launch matters."
-        description="We optimize for outcomes and reliability — so your team can ship confidently."
+        description="We optimize for outcomes and reliability - so your team can ship confidently."
       />
       <div className="mt-12">
         <TestimonialsCarousel testimonials={testimonials} />
@@ -43,4 +43,3 @@ export default function TestimonialsSection({ content }: { content?: SiteContent
     </SectionShell>
   );
 }
-

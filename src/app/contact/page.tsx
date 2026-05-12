@@ -35,7 +35,7 @@ export default async function ContactPage() {
         <aside className="rounded-3xl border border-white/10 bg-slate-950/35 p-8 backdrop-blur-md">
           <h2 className="text-lg font-semibold text-white">Prefer a call?</h2>
           <p className="mt-2 text-sm text-slate-300">
-            Book a 30 minute strategy session — we&apos;ll review goals, scope, and success metrics.
+            Book a 30 minute strategy session - we&apos;ll review goals, scope, and success metrics.
           </p>
 
           {schedulingUrl ? (

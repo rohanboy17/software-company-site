@@ -1,3 +1,22 @@
+const mediaFields = [
+  {
+    name: "type",
+    title: "Type",
+    type: "string",
+    options: { list: ["image", "video", "mockup", "diagram"] },
+  },
+  { name: "imageSrc", title: "Image Source", type: "string" },
+  { name: "videoSrc", title: "Video Source", type: "string" },
+  { name: "posterSrc", title: "Poster Source", type: "string" },
+  { name: "alt", title: "Alt Text", type: "string" },
+  {
+    name: "variant",
+    title: "Mockup/Diagram Variant",
+    type: "string",
+    options: { list: ["dashboard", "mobile", "ai", "cms", "flow", "architecture"] },
+  },
+];
+
 const siteContentSchema = {
   name: "siteContent",
   title: "Site Content",
@@ -96,6 +115,7 @@ const siteContentSchema = {
             { name: "description", title: "Description", type: "text" },
             { name: "outcomes", title: "Outcomes", type: "array", of: [{ type: "string" }] },
             { name: "features", title: "Features", type: "array", of: [{ type: "string" }] },
+            { name: "media", title: "Media", type: "object", fields: mediaFields },
             {
               name: "faqs",
               title: "FAQs",
@@ -127,6 +147,9 @@ const siteContentSchema = {
             { name: "headline", title: "Headline", type: "text" },
             { name: "impact", title: "Impact", type: "string" },
             { name: "image", title: "Image", type: "image", options: { hotspot: true } },
+            { name: "imageUrl", title: "Fallback Image URL", type: "url" },
+            { name: "featuredOrder", title: "Featured Order", type: "number" },
+            { name: "media", title: "Media", type: "object", fields: mediaFields },
             { name: "problem", title: "Problem", type: "text" },
             { name: "approach", title: "Approach", type: "text" },
             { name: "timeline", title: "Timeline", type: "string" },
@@ -161,6 +184,8 @@ const siteContentSchema = {
             { name: "name", title: "Name", type: "string" },
             { name: "role", title: "Role", type: "string" },
             { name: "company", title: "Company", type: "string" },
+            { name: "outcome", title: "Outcome", type: "string" },
+            { name: "media", title: "Media", type: "object", fields: mediaFields },
           ],
         },
       ],
@@ -189,6 +214,7 @@ const siteContentSchema = {
           fields: [
             { name: "title", title: "Title", type: "string" },
             { name: "detail", title: "Detail", type: "text" },
+            { name: "media", title: "Media", type: "object", fields: mediaFields },
           ],
         },
       ],

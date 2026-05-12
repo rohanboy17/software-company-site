@@ -1,23 +1,27 @@
-import type { SiteContent } from "@/content/site-content";
+import type { Differentiator, SiteContent } from "@/content/site-content";
 import { SectionHeader, SectionShell } from "@/components/site/SectionPrimitives";
 import DifferentiatorsTabs from "@/components/site/DifferentiatorsTabs";
 
-const fallback = [
+const fallback: Differentiator[] = [
   {
     title: "Performance",
-    detail: "Core Web Vitals is a feature — we design motion and 3D around strict budgets.",
+    detail: "Core Web Vitals is a feature - we design motion and 3D around strict budgets.",
+    media: { type: "mockup", variant: "dashboard", alt: "Performance analytics dashboard" },
   },
   {
     title: "Design systems",
     detail: "Tokenized UI that scales across pages, campaigns, and product surfaces.",
+    media: { type: "diagram", variant: "flow", alt: "Design system component map" },
   },
   {
     title: "Reliability",
     detail: "Hardening basics baked in: headers, validation, safe defaults, and uptime focus.",
+    media: { type: "diagram", variant: "architecture", alt: "Reliable architecture diagram" },
   },
   {
     title: "AI enablement",
     detail: "Applied AI where it matters: copilots, retrieval, automation, and product workflows.",
+    media: { type: "mockup", variant: "ai", alt: "AI retrieval workflow" },
   },
 ];
 
@@ -44,4 +48,3 @@ export default function DifferentiatorsSection({ content }: { content?: SiteCont
     </SectionShell>
   );
 }
-

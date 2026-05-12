@@ -1,6 +1,7 @@
 import type { SiteContent } from "@/content/site-content";
 import { SectionHeader, SectionShell } from "@/components/site/SectionPrimitives";
 import { Reveal } from "@/components/site/MotionPrimitives";
+import { AnimatedDiagram, MockupPanel } from "@/components/site/MediaPrimitives";
 import DnaTimeline from "@/components/site/DnaTimeline";
 
 export default function ProcessSection({ content }: { content: SiteContent }) {
@@ -21,10 +22,19 @@ export default function ProcessSection({ content }: { content: SiteContent }) {
         </div>
       </Reveal>
 
+      <Reveal delay={0.08}>
+        <div className="relative z-10 mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[36px] border border-white/10 bg-slate-900/35 p-6 backdrop-blur-xl">
+            <AnimatedDiagram variant="architecture" className="min-h-[300px]" />
+          </div>
+          <MockupPanel variant="dashboard" title="Client delivery cockpit" className="p-4" />
+        </div>
+      </Reveal>
+
       {/* Stats row below the timeline */}
       <div className="mt-12 grid gap-4 md:grid-cols-4 relative z-10">
         {[
-          { label: "Typical sprint", value: "2–6 weeks", detail: "Fast delivery" },
+          { label: "Typical sprint", value: "2-6 weeks", detail: "Fast delivery" },
           { label: "Communication", value: "Async + Slack", detail: "Total transparency" },
           { label: "Quality", value: "99.9% Uptime", detail: "Enterprise grade" },
           { label: "Ownership", value: "Full IP", detail: "Your code, always" },

@@ -43,7 +43,7 @@ function MetricCard({ metric, index }: { metric: TrustMetric; index: number }) {
         <p className="mt-2 text-xs uppercase tracking-[0.24em] text-slate-300">{metric.label}</p>
         <div className="mt-4 h-px w-full bg-gradient-to-r from-cyan-300/40 via-white/10 to-transparent" />
         <p className="mt-3 text-sm text-slate-200/90">
-          Built with budgets, guardrails, and milestones — so it ships fast and stays fast.
+          Built with budgets, guardrails, and milestones - so it ships fast and stays fast.
         </p>
       </TiltSpotlightCard>
     </motion.div>
@@ -121,4 +121,3 @@ export default function TrustBarInteractive({
     </>
   );
 }
-

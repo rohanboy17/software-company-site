@@ -102,7 +102,7 @@ export default async function WorkPage() {
               ) : null}
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                Strategy → Build → Launch
+                Strategy -&gt; Build -&gt; Launch
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-blue-300" />

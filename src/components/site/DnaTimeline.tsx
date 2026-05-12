@@ -46,7 +46,8 @@ export default function DnaTimeline({ steps }: { steps: ProcessStep[] }) {
   const reduce = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
-    container: scrollContainerRef,
+    target: scrollContainerRef,
+    offset: ["start 65%", "end 35%"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 60, damping: 20 });
@@ -69,29 +70,13 @@ export default function DnaTimeline({ steps }: { steps: ProcessStep[] }) {
   ];
 
   return (
-    <div 
+    <div
       ref={scrollContainerRef}
       data-dna-scroll
-      className="relative flex flex-col md:flex-row items-start w-full h-[70vh] min-h-[600px] max-h-[900px] rounded-[40px] border border-cyan-500/10 bg-slate-950/40 backdrop-blur-3xl overflow-y-auto overflow-x-hidden shadow-[inset_0_0_80px_rgba(34,211,238,0.02)]"
-      style={{
-        height: "70vh",
-        minHeight: 600,
-        maxHeight: 900,
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-        WebkitOverflowScrolling: "touch",
-      }}
+      className="relative flex w-full flex-col items-start overflow-hidden rounded-[40px] border border-cyan-500/10 bg-slate-950/40 shadow-[inset_0_0_80px_rgba(34,211,238,0.02)] backdrop-blur-3xl md:flex-row"
     >
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            [data-dna-scroll]::-webkit-scrollbar { display: none; }
-          `,
-        }}
-      />
-
       {/* LEFT SIDE: Static Container, Animated DNA */}
-      <div className="sticky top-0 hidden h-[70vh] w-2/5 min-h-[600px] max-h-[900px] flex-col items-center justify-center border-r border-white/5 bg-slate-900/20 md:flex">
+      <div className="sticky top-24 hidden h-[calc(100vh-8rem)] max-h-[820px] min-h-[560px] w-2/5 flex-col items-center justify-center border-r border-white/5 bg-slate-900/20 md:flex">
         <svg
           viewBox="0 0 200 900"
           className="h-full w-full max-h-[85%] drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
@@ -144,14 +129,14 @@ export default function DnaTimeline({ steps }: { steps: ProcessStep[] }) {
 
       {/* RIGHT SIDE: Process Cards */}
       <div className="relative z-20 flex w-full flex-col gap-12 p-10 md:w-3/5 md:p-16">
-        <div className="min-h-[10vh]" />
+        <div className="min-h-[8vh]" />
 
         {steps.map((step, index) => (
           <motion.div
             key={step.title}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 80, scale: 0.95, rotateX: -10 }}
             whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1, rotateX: 0 }}
-            viewport={{ root: scrollContainerRef, once: false, margin: "-10% 0px -10% 0px" }}
+            viewport={{ once: false, margin: "-10% 0px -10% 0px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="group relative shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl backdrop-blur-xl md:p-10"
             style={{ transformPerspective: 1000 }}
@@ -172,7 +157,7 @@ export default function DnaTimeline({ steps }: { steps: ProcessStep[] }) {
           </motion.div>
         ))}
 
-        <div className="min-h-[40vh]" />
+        <div className="min-h-[12vh]" />
       </div>
     </div>
   );

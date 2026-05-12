@@ -73,7 +73,7 @@ export default function ServicesSection() {
                 <p className="text-slate-400 leading-relaxed">{service.description}</p>
                 
                 <div className="mt-8 flex items-center text-sm font-semibold text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0">
-                  Explore <span className="ml-2">→</span>
+                  Explore <span className="ml-2">-&gt;</span>
                 </div>
               </GlassCard>
             </motion.div>

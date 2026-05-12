@@ -1,12 +1,14 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import type { MouseEvent, ReactNode } from "react";
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useReducedMotion } from "framer-motion";
 import { Cpu, Globe, Smartphone, Sparkles } from "lucide-react";
 import type { Service, SiteContent } from "@/content/site-content";
 import { SectionHeader, SectionShell } from "@/components/site/SectionPrimitives";
 import { Reveal } from "@/components/site/MotionPrimitives";
+import { MockupPanel } from "@/components/site/MediaPrimitives";
 import ServicesSceneWrapper from "@/components/3d/ServicesSceneWrapper";
 
 function InteractiveServiceCard({
@@ -14,7 +16,7 @@ function InteractiveServiceCard({
   iconBySlug,
 }: {
   service: Service;
-  iconBySlug: Record<string, React.ReactNode>;
+  iconBySlug: Record<string, ReactNode>;
 }) {
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -29,7 +31,7 @@ function InteractiveServiceCard({
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
-  function onMouseMove(e: React.MouseEvent) {
+  function onMouseMove(e: MouseEvent) {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
@@ -88,11 +90,17 @@ function InteractiveServiceCard({
                 <h3 className="text-2xl font-bold text-white tracking-tight">{service.title}</h3>
               </div>
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/35 text-white/80 group-hover:bg-cyan-500/20 group-hover:text-cyan-200 group-hover:scale-110 transition-all">
-                →
+                -&gt;
               </span>
             </div>
 
             <p className="mt-6 text-base leading-relaxed text-slate-300">{service.description}</p>
+
+            <MockupPanel
+              variant={service.media?.variant === "flow" || service.media?.variant === "architecture" ? "dashboard" : service.media?.variant}
+              title={service.media?.alt ?? service.title}
+              className="mt-7 scale-[0.98] p-3"
+            />
 
             <div className="mt-8 grid gap-3 text-sm text-slate-400 sm:grid-cols-2">
               {service.outcomes.slice(0, 4).map((outcome: string) => (
@@ -104,7 +112,7 @@ function InteractiveServiceCard({
             </div>
 
             <div className="mt-10 inline-flex items-center gap-2 text-sm font-bold text-cyan-400 group-hover:text-cyan-300">
-              Explore service <span className="translate-x-0 group-hover:translate-x-1 transition-transform">→</span>
+              Explore service <span className="translate-x-0 group-hover:translate-x-1 transition-transform">-&gt;</span>
             </div>
           </div>
 
@@ -117,7 +125,7 @@ function InteractiveServiceCard({
 }
 
 export default function ServicesGridSection({ content }: { content: SiteContent }) {
-  const iconBySlug: Record<string, React.ReactNode> = {
+  const iconBySlug: Record<string, ReactNode> = {
     "website-development": <Globe className="h-6 w-6" />,
     "mobile-app-development": <Smartphone className="h-6 w-6" />,
     "software-development": <Cpu className="h-6 w-6" />,
@@ -137,7 +145,7 @@ export default function ServicesGridSection({ content }: { content: SiteContent 
       <SectionHeader
         eyebrow="What we do"
         title="Outcomes-first product engineering."
-        description="We build fast, accessible systems that scale — with a motion language that elevates your brand without sacrificing performance."
+        description="We build fast, accessible systems that scale - with a motion language that elevates your brand without sacrificing performance."
         right={
           <Link
             href="/services"

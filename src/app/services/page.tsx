@@ -12,7 +12,7 @@ export default async function ServicesPage() {
         Engineering services for modern teams.
       </h1>
       <p className="mt-4 max-w-3xl text-slate-300">
-        Strategy, design, engineering, and performance — packaged as a calm process with clear milestones.
+        Strategy, design, engineering, and performance - packaged as a calm process with clear milestones.
       </p>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -25,7 +25,7 @@ export default async function ServicesPage() {
             <div className="flex items-start justify-between gap-6">
               <h2 className="text-2xl font-semibold text-white">{service.title}</h2>
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/35 text-white/80 transition group-hover:bg-slate-950/55">
-                →
+                -&gt;
               </span>
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-200">{service.description}</p>

@@ -1,3 +1,12 @@
+export type MediaAsset = {
+  type?: "image" | "video" | "mockup" | "diagram";
+  imageSrc?: string;
+  videoSrc?: string;
+  posterSrc?: string;
+  alt?: string;
+  variant?: "dashboard" | "mobile" | "ai" | "cms" | "flow" | "architecture";
+};
+
 export type Service = {
   title: string;
   slug: string;
@@ -5,6 +14,7 @@ export type Service = {
   outcomes: string[];
   features?: string[];
   faqs?: { q: string; a: string }[];
+  media?: MediaAsset;
 };
 
 export type CaseStudy = {
@@ -19,6 +29,8 @@ export type CaseStudy = {
   timeline?: string;
   stack?: string[];
   results?: { label: string; value: string }[];
+  featuredOrder?: number;
+  media?: MediaAsset;
 };
 
 export type ProcessStep = {
@@ -47,11 +59,13 @@ export type Testimonial = {
   name: string;
   role: string;
   company: string;
+  outcome?: string;
+  media?: MediaAsset;
 };
 
 export type FAQItem = { q: string; a: string };
 
-export type Differentiator = { title: string; detail: string };
+export type Differentiator = { title: string; detail: string; media?: MediaAsset };
 
 export type SiteSEO = {
   siteUrl?: string;
@@ -102,7 +116,7 @@ export const siteContent: SiteContent = {
   trust: {
     metrics: [
       { label: "Avg. Lighthouse", value: "95+" },
-      { label: "Time-to-ship", value: "2–6 wks" },
+      { label: "Time-to-ship", value: "2-6 wks" },
       { label: "Performance budget", value: "Strict" },
       { label: "Delivery model", value: "Milestones" },
     ],
@@ -118,12 +132,17 @@ export const siteContent: SiteContent = {
   },
   services: [
     {
-      title: "High‑performance Websites",
+      title: "High-performance Websites",
       slug: "website-development",
       description:
         "Conversion-first marketing websites with cinematic interactions, SEO structure, and fast Core Web Vitals.",
       outcomes: ["Higher qualified leads", "Faster page experience", "Modern brand perception"],
       features: ["UX & narrative design", "SEO foundations", "Performance optimization", "CMS integration"],
+      media: {
+        type: "mockup",
+        variant: "cms",
+        alt: "Conversion website and CMS preview",
+      },
       faqs: [
         {
           q: "Will the site be fast with animations?",
@@ -131,7 +150,7 @@ export const siteContent: SiteContent = {
         },
         {
           q: "Can we edit content ourselves?",
-          a: "Yes — we can integrate a CMS so your team can update pages without code changes.",
+          a: "Yes - we can integrate a CMS so your team can update pages without code changes.",
         },
       ],
     },
@@ -142,10 +161,15 @@ export const siteContent: SiteContent = {
         "Cross-platform mobile applications engineered for smooth UX, scale, and secure integrations.",
       outcomes: ["Better retention", "Faster release cycles", "App-store-ready quality"],
       features: ["UX-first app flows", "Offline-ready foundations", "Secure auth & APIs", "Release automation"],
+      media: {
+        type: "mockup",
+        variant: "mobile",
+        alt: "Mobile product onboarding preview",
+      },
       faqs: [
         {
           q: "Do you build iOS and Android?",
-          a: "Yes — either cross-platform or native depending on performance and requirements.",
+          a: "Yes - either cross-platform or native depending on performance and requirements.",
         },
       ],
     },
@@ -156,6 +180,11 @@ export const siteContent: SiteContent = {
         "Dashboards, portals, and SaaS frontends engineered for performance, reliability, and growth.",
       outcomes: ["Operational efficiency", "Reliable architecture", "Business process automation"],
       features: ["API design", "Dashboards & internal tools", "Integration layers", "Testing & observability"],
+      media: {
+        type: "mockup",
+        variant: "dashboard",
+        alt: "SaaS dashboard system preview",
+      },
     },
     {
       title: "AI Features & Automation",
@@ -164,6 +193,11 @@ export const siteContent: SiteContent = {
         "Applied AI: RAG, copilots, workflow automation, and guardrails built for production.",
       outcomes: ["Smarter decisions", "Reduced repetitive work", "AI-enabled product features"],
       features: ["RAG & retrieval", "Workflow automation", "Guardrails & evals", "Production deployment"],
+      media: {
+        type: "mockup",
+        variant: "ai",
+        alt: "AI workflow automation preview",
+      },
     },
   ],
   caseStudies: [
@@ -174,6 +208,13 @@ export const siteContent: SiteContent = {
       impact: "2.8x more demo requests in 90 days",
       imageUrl:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1600",
+      media: {
+        type: "image",
+        imageSrc: "/media/case-studies/finsage-dashboard.svg",
+        posterSrc: "/media/case-studies/finsage-dashboard.svg",
+        alt: "FinSage dashboard preview",
+      },
+      featuredOrder: 1,
       problem: "Low conversion and slow page experience on a legacy site.",
       approach: "New narrative, faster architecture, and motion tuned to performance budgets.",
       timeline: "4 weeks",
@@ -190,6 +231,13 @@ export const siteContent: SiteContent = {
       impact: "41% increase in weekly active users",
       imageUrl:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1600",
+      media: {
+        type: "image",
+        imageSrc: "/media/case-studies/medinova-mobile.svg",
+        posterSrc: "/media/case-studies/medinova-mobile.svg",
+        alt: "MediNova mobile care app preview",
+      },
+      featuredOrder: 2,
       problem: "Fragmented UX and inconsistent performance across devices.",
       approach: "Streamlined flows, reliable realtime integrations, and rigorous QA.",
       timeline: "8 weeks",
@@ -206,6 +254,13 @@ export const siteContent: SiteContent = {
       impact: "34% faster daily planning operations",
       imageUrl:
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600",
+      media: {
+        type: "image",
+        imageSrc: "/media/case-studies/corefleet-ai.svg",
+        posterSrc: "/media/case-studies/corefleet-ai.svg",
+        alt: "CoreFleet AI operations dashboard preview",
+      },
+      featuredOrder: 3,
       problem: "Manual planning and fragmented data slowed daily ops.",
       approach: "Dashboard UX + automation and AI summaries for rapid decisions.",
       timeline: "6 weeks",
@@ -223,6 +278,8 @@ export const siteContent: SiteContent = {
       name: "Aditi",
       role: "VP Growth",
       company: "B2B SaaS",
+      outcome: "+180% demo requests",
+      media: { type: "mockup", variant: "dashboard", alt: "B2B SaaS growth system" },
     },
     {
       quote:
@@ -230,23 +287,27 @@ export const siteContent: SiteContent = {
       name: "Rahul",
       role: "Product Lead",
       company: "HealthTech",
+      outcome: "99.8% crash-free sessions",
+      media: { type: "mockup", variant: "mobile", alt: "HealthTech mobile workflow" },
     },
     {
       quote:
-        "Best vendor experience we’ve had — clean engineering, great motion craft, and everything launched on time.",
+        "Best vendor experience we've had - clean engineering, great motion craft, and everything launched on time.",
       name: "Sara",
       role: "Founder",
       company: "FinTech",
+      outcome: "Launched on schedule",
+      media: { type: "mockup", variant: "cms", alt: "FinTech launch workspace" },
     },
   ],
   faqs: [
     {
       q: "How do you price projects?",
-      a: "Fixed-scope for well-defined builds, or monthly retainers for iterative product work. We’ll recommend the model that reduces risk.",
+      a: "Fixed-scope for well-defined builds, or monthly retainers for iterative product work. We'll recommend the model that reduces risk.",
     },
     {
       q: "How fast can we launch?",
-      a: "Most marketing sites ship in 2–6 weeks depending on complexity. We’ll define milestones and a delivery plan in the first call.",
+      a: "Most marketing sites ship in 2-6 weeks depending on complexity. We'll define milestones and a delivery plan in the first call.",
     },
     {
       q: "Who owns the code and design?",
@@ -254,25 +315,29 @@ export const siteContent: SiteContent = {
     },
     {
       q: "Can you work with our existing team?",
-      a: "Yes — we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation.",
+      a: "Yes - we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation.",
     },
   ],
   differentiators: [
     {
       title: "Performance budgets",
-      detail: "Core Web Vitals is a feature — we design motion and 3D around strict budgets.",
+      detail: "Core Web Vitals is a feature - we design motion and 3D around strict budgets.",
+      media: { type: "mockup", variant: "dashboard", alt: "Performance analytics dashboard" },
     },
     {
       title: "Design systems",
       detail: "Tokenized UI that scales across pages, campaigns, and product surfaces.",
+      media: { type: "diagram", variant: "flow", alt: "Design system component map" },
     },
     {
       title: "Security & reliability",
       detail: "Hardening basics baked in: headers, validation, safe defaults, and uptime focus.",
+      media: { type: "diagram", variant: "architecture", alt: "Reliable architecture diagram" },
     },
     {
       title: "AI enablement",
       detail: "Applied AI where it matters: copilots, retrieval, automation, and product workflows.",
+      media: { type: "mockup", variant: "ai", alt: "AI retrieval workflow" },
     },
   ],
   siteSeo: {

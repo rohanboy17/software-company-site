@@ -11,7 +11,7 @@ type TrustMetricWithDetail = { label: string; value: string; detail?: string };
 
 const defaultMetrics: TrustMetricWithDetail[] = [
   { label: "Avg. Lighthouse", value: "95+", detail: "Every build is audited against strict Core Web Vitals budgets to ensure maximum performance." },
-  { label: "Time-to-ship", value: "2–6 wks", detail: "Our engineering velocity allows us to move from discovery to production-ready code in record time." },
+  { label: "Time-to-ship", value: "2-6 wks", detail: "Our engineering velocity allows us to move from discovery to production-ready code in record time." },
   { label: "Performance budget", value: "Strict", detail: "Zero-compromise on bundle sizes, hydration times, and image optimization metrics." },
   { label: "Delivery model", value: "Milestones", detail: "Bi-weekly syncs and tight feedback loops ensure the product evolves exactly as envisioned." },
 ];
@@ -41,7 +41,7 @@ export default function TrustBarSection({ content }: { content: SiteContent }) {
               </span>
             </span>
           }
-          description="Trusted by teams shipping worldwide — optimized for Core Web Vitals, reliability, and clean handoffs."
+          description="Trusted by teams shipping worldwide - optimized for Core Web Vitals, reliability, and clean handoffs."
         />
 
         {/* 3D Tilt Metric Cards */}
@@ -66,7 +66,7 @@ export default function TrustBarSection({ content }: { content: SiteContent }) {
                       <span className="text-sm font-bold tracking-[0.3em] text-white/40 uppercase hover:text-white transition-colors cursor-default">
                         {logo.name}
                       </span>
-                      <span className="text-cyan-500/40 text-lg">✦</span>
+                      <span className="text-cyan-500/40 text-lg">*</span>
                     </span>
                   </React.Fragment>
                 ))}

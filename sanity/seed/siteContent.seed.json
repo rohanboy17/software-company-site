@@ -19,7 +19,7 @@
   "trust": {
     "metrics": [
       { "_key": "metric-1", "_type": "object", "label": "Avg. Lighthouse", "value": "95+" },
-      { "_key": "metric-2", "_type": "object", "label": "Time-to-ship", "value": "2–6 wks" },
+      { "_key": "metric-2", "_type": "object", "label": "Time-to-ship", "value": "2-6 wks" },
       { "_key": "metric-3", "_type": "object", "label": "Performance budget", "value": "Strict" },
       { "_key": "metric-4", "_type": "object", "label": "Delivery model", "value": "Milestones" }
     ],
@@ -41,7 +41,7 @@
     {
       "_key": "service-website",
       "_type": "object",
-      "title": "High‑performance Websites",
+      "title": "High-performance Websites",
       "slug": {
         "_type": "slug",
         "current": "website-development"
@@ -60,7 +60,7 @@
           "_key": "service-website-faq-2",
           "_type": "object",
           "q": "Can we edit content ourselves?",
-          "a": "Yes — we can integrate a CMS so your team can update pages without code changes."
+          "a": "Yes - we can integrate a CMS so your team can update pages without code changes."
         }
       ]
     },
@@ -171,7 +171,7 @@
     {
       "_key": "testimonial-3",
       "_type": "object",
-      "quote": "Best vendor experience we’ve had — clean engineering, great motion craft, and everything launched on time.",
+      "quote": "Best vendor experience we've had - clean engineering, great motion craft, and everything launched on time.",
       "name": "Sara",
       "role": "Founder",
       "company": "FinTech"
@@ -188,7 +188,7 @@
       "_key": "faq-2",
       "_type": "object",
       "q": "How fast can we launch?",
-      "a": "Most marketing sites ship in 2–6 weeks depending on complexity. We’ll define milestones and a delivery plan in the first call."
+      "a": "Most marketing sites ship in 2-6 weeks depending on complexity. We'll define milestones and a delivery plan in the first call."
     },
     {
       "_key": "faq-3",
@@ -200,11 +200,11 @@
       "_key": "faq-4",
       "_type": "object",
       "q": "Can you work with our existing team?",
-      "a": "Yes — we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation."
+      "a": "Yes - we can integrate with your engineers/designers, or deliver end-to-end with clear handoff documentation."
     }
   ],
   "differentiators": [
-    { "_key": "diff-1", "_type": "object", "title": "Performance budgets", "detail": "Core Web Vitals is a feature — we design motion and 3D around strict budgets." },
+    { "_key": "diff-1", "_type": "object", "title": "Performance budgets", "detail": "Core Web Vitals is a feature - we design motion and 3D around strict budgets." },
     { "_key": "diff-2", "_type": "object", "title": "Design systems", "detail": "Tokenized UI that scales across pages, campaigns, and product surfaces." },
     { "_key": "diff-3", "_type": "object", "title": "Security & reliability", "detail": "Hardening basics baked in: headers, validation, safe defaults, and uptime focus." },
     { "_key": "diff-4", "_type": "object", "title": "AI enablement", "detail": "Applied AI where it matters: copilots, retrieval, automation, and product workflows." }

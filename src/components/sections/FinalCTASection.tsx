@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import type { SiteContent } from "@/content/site-content";
 import { Chip } from "@/components/site/SectionPrimitives";
 import { Reveal } from "@/components/site/MotionPrimitives";
+import { VideoPreview } from "@/components/site/MediaPrimitives";
 
 export default function FinalCTASection({ content }: { content: SiteContent }) {
   const schedulingUrl = content.company?.schedulingUrl;
   const email = content.company?.email ?? "rohanmondalpc@gmail.com";
-  type CTAStyle = React.CSSProperties & { ["--mouse-x"]?: string; ["--mouse-y"]?: string };
+  type CTAStyle = CSSProperties & { ["--mouse-x"]?: string; ["--mouse-y"]?: string };
   const glowStyle: CTAStyle = { "--mouse-x": "20%", "--mouse-y": "30%" };
 
   return (
@@ -42,7 +44,7 @@ export default function FinalCTASection({ content }: { content: SiteContent }) {
                 </motion.div>
 
                 <div className="mt-10 flex flex-wrap gap-3">
-                  <Chip>Launch Sprint (2–6 weeks)</Chip>
+                  <Chip>Launch Sprint (2-6 weeks)</Chip>
                   <Chip>Retainer</Chip>
                   <Chip>Embedded</Chip>
                 </div>
@@ -87,6 +89,13 @@ export default function FinalCTASection({ content }: { content: SiteContent }) {
                 <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl group-hover/aside:bg-cyan-500/20 transition-colors" />
                 
                 <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400">What you get</p>
+                <div className="mt-7">
+                  <VideoPreview
+                    poster="/media/final-cta-poster.svg"
+                    label="Launch preview"
+                    className="min-h-[220px]"
+                  />
+                </div>
                 <ul className="mt-8 space-y-6">
                   {[
                     "Milestone plan + delivery timeline",
@@ -104,7 +113,7 @@ export default function FinalCTASection({ content }: { content: SiteContent }) {
                 <div className="mt-10 rounded-3xl border border-white/5 bg-white/5 p-6 transition-colors hover:bg-white/10">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Our Guarantee</p>
                   <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                    If we&apos;re not a fit, we&apos;ll tell you fast — and point you to the best next option.
+                    If we&apos;re not a fit, we&apos;ll tell you fast - and point you to the best next option.
                   </p>
                 </div>
                 
